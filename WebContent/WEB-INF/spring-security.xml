@@ -1,0 +1,71 @@
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+	<!-- <http auto-config="true"> <intercept-url pattern="/admin**" access="ROLE_ADMIN" 
+		/> <access-denied-handler error-page="/admin/main/403.html" /> <form-login 
+		login-page="/main/login.html" default-target-url="/main/welcome.html" authentication-failure-url="/main/login.html?error" 
+		username-parameter="username" password-parameter="password" /> <logout logout-success-url="/main/logout.html" 
+		/> </http> -->
+	<!-- <http name="admin" pattern="/admin/*" auto-config="true"> <access-denied-handler 
+		error-page="/admin/main/403.html" /> <intercept-url pattern="/admin/**" access="ROLE_ADMIN" 
+		/> <form-login login-page="/main/login.html" login-processing-url="/main/process-login.html" 
+		default-target-url="/main/welcome.html" authentication-failure-url="/main/login.html?error" 
+		username-parameter="username" password-parameter="password" always-use-default-target="false" 
+		/> <logout logout-url="/main/logout.html" logout-success-url="/admin/main/logout.html?logout" 
+		invalidate-session="true" delete-cookies="true" /> </http> -->
+
+	<http name="admin" pattern="/admin/*" auto-config="true">
+		<access-denied-handler error-page="/admin-panel/403.html" />
+		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+		<form-login login-page="/admin-panel.html"
+			login-processing-url="/admin/process-login.html" default-target-url="/admin/welcome.html"
+			authentication-failure-url="/admin-panel/login.html?error"
+			username-parameter="username" password-parameter="password"
+			always-use-default-target="false" />
+		<logout logout-url="/admin/process-logout.html"
+			logout-success-url="/admin-panel/logout.html?logout"
+			invalidate-session="true" delete-cookies="true" />
+	</http>
+	<http name="account" pattern="/account/*" auto-config="true">
+		<access-denied-handler error-page="/accountPanel/403.html" />
+		<intercept-url pattern="/account/**" access="ROLE_EMPLOYEE" />
+		<form-login login-page="/accountPanel.html"
+			login-processing-url="/account/process-login.html"
+			default-target-url="/home.html"
+			authentication-failure-url="/accountPanel/login.html?error"
+			username-parameter="username" password-parameter="password"
+			always-use-default-target="false" />
+		<logout logout-url="/account/process-logout.html"
+			logout-success-url="/accountPanel/logout.html?logout"
+			invalidate-session="true" delete-cookies="true" />
+	</http>
+	<beans:bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg name="strength" value="12" />
+	</beans:bean>
+
+	<!-- Select users and user_roles from database -->
+	<authentication-manager>
+		<authentication-provider>
+
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT USERNAME, PASSWORD, CASE ENABLED WHEN 1 THEN 'true' ELSE 'false' END 'ENABLED' 
+				     FROM USERS 
+				     WHERE USERNAME=?;"
+				authorities-by-username-query="
+		    SELECT u.USERNAME, r.NAME 
+					FROM USERS u, USER_ROLE ur, ROLES r
+					WHERE u.ID = ur.USERID and r.ID=ur.ROLEID
+					AND u.USERNAME=? and ur.ENABLE=1;" />
+			<password-encoder ref="passwordEncoder" />
+
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

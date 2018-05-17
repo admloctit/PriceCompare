@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		<mapping class="ecom.entities.Brand" />
+		<mapping class="ecom.entities.Category" />
+		<mapping class="ecom.entities.Product" />
+		<mapping class="ecom.entities.Roles" />
+		<mapping class="ecom.entities.Supplier" />
+		<mapping class="ecom.entities.UserRole" />
+		<mapping class="ecom.entities.UserRoleId" />
+		<mapping class="ecom.entities.Users" />
+	</session-factory>
+</hibernate-configuration>

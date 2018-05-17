@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="user.base.template" template="/WEB-INF/jsp/templates/templateUser.jsp">
+		<put-attribute name="content" value=""></put-attribute>
+	</definition>
+	<definition name="user.base.templateEmpty" template="/WEB-INF/jsp/templates/templateEmpty.jsp">
+		<put-attribute name="content" value=""></put-attribute>
+	</definition>
+
+	<definition name="home.index" extends="user.base.template">
+		<put-attribute name="content" 
+			value="/WEB-INF/jsp/user/home/index.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="account.register" extends="user.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/account/register.jsp"></put-attribute>
+	</definition>
+	<definition name="account.login" extends="user.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/account/login.jsp"></put-attribute>
+	</definition>
+	<definition name="account.403" extends="user.base.templateEmpty">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/account/403.jsp"></put-attribute>
+	</definition>
+	<definition name="account.register.success" extends="user.base.templateEmpty">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/account/success.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="brand.index" extends="user.base.template">
+		<put-attribute name="content" 
+			value="/WEB-INF/jsp/user/brand/index.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="supplier.index" extends="user.base.template">
+		<put-attribute name="content" 
+			value="/WEB-INF/jsp/user/supplier/index.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="search.result" extends="user.base.template">
+		<put-attribute name="content" 
+			value="/WEB-INF/jsp/user/search/result.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="product.index" extends="user.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/product/index.jsp"></put-attribute>
+	</definition>
+</tiles-definitions>

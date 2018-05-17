@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- Defined Templates -->
+	<definition name="admin.base.template" template="/WEB-INF/jsp/templates/templateAdmin.jsp">
+		<put-attribute name="content" value=""></put-attribute>
+	</definition>
+	<definition name="admin.base.templateEmpty" template="/WEB-INF/jsp/templates/templateEmpty.jsp">
+		<put-attribute name="content" value=""></put-attribute>
+	</definition>
+
+	<!-- Category Management -->
+	<definition name="admin.category.index" extends="admin.base.template">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/admin/category/index.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.category.add" extends="admin.base.template">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/admin/category/add.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.category.edit" extends="admin.base.template">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/admin/category/edit.jsp"></put-attribute>
+	</definition>
+
+	<!-- Brand Management -->
+	<definition name="admin.brand.index" extends="admin.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/brand/index.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.brand.add" extends="admin.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/brand/add.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.brand.edit" extends="admin.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/brand/edit.jsp"></put-attribute>
+	</definition>
+
+	<!-- Supplier Management -->
+	<definition name="admin.supplier.index" extends="admin.base.template">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/admin/supplier/index.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.supplier.add" extends="admin.base.template">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/admin/supplier/add.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.supplier.edit" extends="admin.base.template">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/admin/supplier/edit.jsp"></put-attribute>
+	</definition>
+
+	<!-- Product Management -->
+	<definition name="admin.product.index" extends="admin.base.template">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/admin/product/index.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.product.add" extends="admin.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/product/add.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.product.edit" extends="admin.base.template">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/admin/product/edit.jsp"></put-attribute>
+	</definition>
+	<!-- Forgot Password -->
+	<definition name="admin.recoverpw" template="/WEB-INF/jsp/templates/templateEmpty.jsp">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/recoverpw.jsp"></put-attribute>
+	</definition>
+		<definition name="admin.getnewpass" template="/WEB-INF/jsp/templates/templateEmpty.jsp">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/getnewpass.jsp"></put-attribute>
+	</definition>
+
+
+
+	<!-- Authentication -->
+	<definition name="admin.login" template="/WEB-INF/jsp/templates/templateEmpty.jsp">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/login.jsp"></put-attribute>
+	</definition>
+	<definition name="admin.profile" extends="admin.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/profile.jsp"></put-attribute>
+	</definition>
+	<definition name="admin.403" template="/WEB-INF/jsp/templates/templateEmpty.jsp">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/403.jsp"></put-attribute>
+	</definition>
+
+	<definition name="admin.welcome" extends="admin.base.template">
+		<put-attribute name="content" value="/WEB-INF/jsp/admin/welcome.jsp"></put-attribute>
+	</definition>
+
+</tiles-definitions>
